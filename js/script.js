@@ -26,7 +26,6 @@ const slides = [
     }
 ];
 
-
 const app = new Vue({
     el: '#app',
     data: {
@@ -58,6 +57,27 @@ const app = new Vue({
             } else {
                 return "thumb";
             }
+        },
+
+        autoPlay() {
+            const clock = setInterval(() => {
+
+                if (this.slideIndex >= 0 && this.slideIndex < slides.length - 1) {
+                    this.slideIndex += 1;
+                    console.log(this.slideIndex);
+                } else {
+                    this.slideIndex = 0;
+                }
+
+                return this.slideIndex;
+
+            }, 3000);
+        },
+
+        stopImageFlow() {
+            clearInterval(this.clock);
         }
     }
-})
+
+
+});
