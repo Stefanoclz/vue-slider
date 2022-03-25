@@ -31,6 +31,9 @@ const app = new Vue(
         el: '#app',
         data: {
             slides,
+            slideIndex: 0,
+        },
+        methods: {
 
         }
 
