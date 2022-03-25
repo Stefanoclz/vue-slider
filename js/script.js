@@ -26,16 +26,38 @@ const slides = [
     }
 ];
 
-const app = new Vue(
-    {
-        el: '#app',
-        data: {
-            slides,
-            slideIndex: 0,
+
+const app = new Vue({
+    el: '#app',
+    data: {
+        slides,
+        slideIndex: 0,
+    },
+    methods: {
+        prevImage() {
+            if (this.slideIndex > 0) {
+                this.slideIndex--;
+            } else {
+                this.slideIndex = slides.length - 1;
+            }
         },
-        methods: {
 
+        nextImage() {
+            if (this.slideIndex < this.slides.length - 1) {
+                this.slideIndex++;
+            } else {
+                this.slideIndex = 0;
+            }
+        },
+
+        activeCheck(item) {
+            const check = this.slides.findIndex(
+                (slide) => slide.title === item.title);
+            if (check === this.slideIndex) {
+                return "thumb active";
+            } else {
+                return "thumb";
+            }
         }
-
     }
-)
+})
