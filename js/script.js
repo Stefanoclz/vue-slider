@@ -60,6 +60,7 @@ const app = new Vue({
         },
 
         autoPlay() {
+            this.slideIndex;
             const clock = setInterval(() => {
 
                 if (this.slideIndex >= 0 && this.slideIndex < slides.length - 1) {
@@ -68,8 +69,9 @@ const app = new Vue({
                 } else {
                     this.slideIndex = 0;
                 }
-
+                clearInterval(clock);
                 return this.slideIndex;
+
 
             }, 3000);
         },
@@ -81,3 +83,4 @@ const app = new Vue({
 
 
 });
+
