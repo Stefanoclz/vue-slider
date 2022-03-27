@@ -13,7 +13,7 @@
 
 <body>
 
-    <div id="app" :class="autoPlay()">
+    <div id="app">
 
         <div class="container">
             <div class="slider-wrapper" tabindex="0">
@@ -28,17 +28,17 @@
                     </div>
                 </div>
 
-                <div class="thumbs" @mouseover="stopImageFlow()">
-                    <div @click="prevImage" class="prev"></div>
-                    <div @click="nextImage" class="next"></div>
-                    <div v-for="slide in slides" :class="activeCheck(slide)">
-                        <img :src="slide.image" :alt="slide.title" />
-                    </div>
-
+                <div @mouseover="stopAutoPlay()" class="thumbs" :class="" />
+                <div @click="prevImage" class="prev"></div>
+                <div @click="nextImage" class="next"></div>
+                <div v-for="slide in slides" :class="activeCheck(slide)">
+                    <img @click="showImage(slide)" :src="slide.image" :alt="slide.title" />
                 </div>
 
             </div>
+
         </div>
+    </div>
 
     </div>
 
