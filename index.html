@@ -28,10 +28,10 @@
                     </div>
                 </div>
 
-                <div @mouseover="stopAutoPlay()" class="thumbs" :class="" />
+                <div @mouseover="stopAutoPlay()" class="thumbs" :class="autoPlay()" />
                 <div @click="prevImage" class="prev"></div>
                 <div @click="nextImage" class="next"></div>
-                <div v-for="slide in slides" :class="activeCheck(slide)">
+                <div @mouseout="autoPlay()" v-for="slide in slides" :class="activeCheck(slide)">
                     <img @click="showImage(slide)" :src="slide.image" :alt="slide.title" />
                 </div>
 

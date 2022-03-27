@@ -64,7 +64,7 @@ const app = new Vue({
 
             let clock = setInterval(() => {
 
-                if (this.slideIndex >= 0 && this.slideIndex < slides.length - 1) {
+                if (this.slideIndex >= 0 && this.slideIndex < this.slides.length - 1) {
                     this.slideIndex++;
 
                 } else {
@@ -72,10 +72,6 @@ const app = new Vue({
                 }
                 clearInterval(clock);
             }, 1000);
-        },
-
-        stopAutoPlay() {
-
         },
 
         showImage(slide) {
@@ -86,7 +82,11 @@ const app = new Vue({
                     this.slideIndex = photo;
                 }
             }
-        }
+        },
+
+        stopAutoPlay() {
+            this.autoPlay = clearInterval(this.clock);
+        },
     }
 });
 
