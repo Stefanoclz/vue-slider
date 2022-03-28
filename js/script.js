@@ -31,7 +31,7 @@ const app = new Vue({
     data: {
         slides,
         slideIndex: 0,
-        hover: false,
+        clock: undefined,
     },
     methods: {
         prevImage() {
@@ -62,16 +62,13 @@ const app = new Vue({
 
         autoPlay() {
 
-            let clock = setInterval(() => {
+            this.clock = setInterval(this.nextImage, 3000);
+            console.log('autoPlay', this.clock);
+        },
 
-                if (this.slideIndex >= 0 && this.slideIndex < this.slides.length - 1) {
-                    this.slideIndex++;
-
-                } else {
-                    this.slideIndex = 0;
-                }
-                clearInterval(clock);
-            }, 1000);
+        stopAutoPlay() {
+            clearInterval(this.clock);
+            console.log('stopAutoPlay', this.clock);
         },
 
         showImage(slide) {
@@ -84,9 +81,6 @@ const app = new Vue({
             }
         },
 
-        stopAutoPlay() {
-            this.autoPlay = clearInterval(this.clock);
-        },
     }
 });
 

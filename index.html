@@ -16,7 +16,7 @@
     <div id="app">
 
         <div class="container">
-            <div class="slider-wrapper" tabindex="0">
+            <div class="slider-wrapper" tabindex="0" @mouseover="stopAutoPlay()" @mouseout="autoPlay()">
 
                 <div class="item">
                     <img :src="slides[slideIndex].image" alt="slides[slideIndex].title" />
@@ -28,11 +28,12 @@
                     </div>
                 </div>
 
-                <div @mouseover="stopAutoPlay()" class="thumbs" :class="autoPlay()" />
-                <div @click="prevImage" class="prev"></div>
-                <div @click="nextImage" class="next"></div>
-                <div @mouseout="autoPlay()" v-for="slide in slides" :class="activeCheck(slide)">
-                    <img @click="showImage(slide)" :src="slide.image" :alt="slide.title" />
+                <div class="thumbs">
+                    <div @click="prevImage" class="prev"></div>
+                    <div @click="nextImage" class="next"></div>
+                    <div v-for="slide in slides" :class="activeCheck(slide)">
+                        <img @click="showImage(slide)" :src="slide.image" :alt="slide.title" />
+                    </div>
                 </div>
 
             </div>
